@@ -1,9 +1,25 @@
-function App() {
+import { FC } from 'react';
+import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          WebkitFontSmoothing: 'auto',
+        },
+      },
+    },
+  },
+});
+
+const App: FC = () => {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <h1>Hello world!</h1>
-    </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
