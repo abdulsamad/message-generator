@@ -1,24 +1,18 @@
 import { FC } from 'react';
-import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
 
-const theme = createMuiTheme({
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        html: {
-          WebkitFontSmoothing: 'auto',
-        },
-      },
-    },
-  },
-});
+import Theme from './layout/Theme';
+import Navbar from './layout/Navbar';
+import Form from './layout/Form';
+import { Context } from './context/Context';
 
 const App: FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <h1>Hello world!</h1>
-    </ThemeProvider>
+    <Context>
+      <Theme>
+        <Navbar title="Message Generator" />
+        <Form />
+      </Theme>
+    </Context>
   );
 };
 
