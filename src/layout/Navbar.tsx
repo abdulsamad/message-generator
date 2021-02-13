@@ -17,6 +17,9 @@ const useStyles = makeStyles(() => ({
   title: {
     flexGrow: 1,
   },
+  icon: {
+    color: '#fff',
+  },
 }));
 
 interface Props {
@@ -27,6 +30,18 @@ const Navbar: FC<Props> = ({ title }) => {
   const { theme, setTheme } = useAppContext();
   const classes = useStyles();
 
+  const toggleTheme = () => {
+    const key = 'theme';
+
+    if (theme === 'dark') {
+      localStorage.setItem(key, 'light');
+      setTheme('light');
+    } else {
+      localStorage.setItem(key, 'dark');
+      setTheme('dark');
+    }
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position='static'>
@@ -35,7 +50,7 @@ const Navbar: FC<Props> = ({ title }) => {
             {title}
           </Typography>
           <Fade in={true}>
-            <Button onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}>
+            <Button className={classes.icon} onClick={toggleTheme}>
               {theme ? <Brightness4Icon /> : <Brightness7Icon />}
             </Button>
           </Fade>
