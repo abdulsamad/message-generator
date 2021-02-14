@@ -1,20 +1,25 @@
-export type themeTypes = 'light' | 'dark';
+export type themeType = 'light' | 'dark';
+
+export type textType = {
+  name: string;
+  count: string;
+};
 
 export interface IState {
-  theme: themeTypes;
-  setTheme: (theme: themeTypes) => void;
-  text: string | null;
-  setText: (text: string) => void;
+  theme: themeType;
+  setTheme: (theme: themeType) => void;
+  text: null | textType[];
+  setText: (text: textType[]) => void;
 }
 
 interface setTheme {
   type: 'SET_THEME';
-  payload: themeTypes;
+  payload: themeType;
 }
 
 interface setText {
   type: 'SET_TEXT';
-  payload: string;
+  payload: textType[];
 }
 
 export type Action = setTheme | setText;
