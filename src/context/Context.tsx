@@ -4,7 +4,7 @@ import reducer from './reducer';
 import * as types from './types';
 
 const initialState = {
-  theme: 'dark' as types.themeTypes,
+  theme: 'dark' as types.themeType,
   setTheme: () => null,
   text: null,
   setText: () => null,
@@ -21,14 +21,14 @@ const Context: FC = ({ children }) => {
     if (theme) setTheme(theme);
   }, []);
 
-  const setTheme = (theme: string): void => {
+  const setTheme = (theme: types.themeType): void => {
     dispatch({
       type: types.SET_THEME,
-      payload: theme as types.themeTypes,
+      payload: theme,
     });
   };
 
-  const setText = (text: string) => {
+  const setText = (text: types.textType[]) => {
     dispatch({
       type: types.SET_TEXT,
       payload: text,
