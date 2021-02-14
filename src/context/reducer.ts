@@ -8,10 +8,10 @@ const reducer = (state: types.IState, action: types.Action) => {
         theme: action.payload,
       };
 
-    case types.SET_TEXT:
+    case types.ADD_TEXT:
       return {
         ...state,
-        text: action.payload,
+        text: [...state.text, action.payload],
       };
 
     default:

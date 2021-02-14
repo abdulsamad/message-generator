@@ -7,9 +7,9 @@ export type textType = {
 
 export interface IState {
   theme: themeType;
+  text: textType[];
   setTheme: (theme: themeType) => void;
-  text: null | textType[];
-  setText: (text: textType[]) => void;
+  addText: (text: textType) => void;
 }
 
 interface setTheme {
@@ -17,12 +17,12 @@ interface setTheme {
   payload: themeType;
 }
 
-interface setText {
-  type: 'SET_TEXT';
-  payload: textType[];
+interface addText {
+  type: 'ADD_TEXT';
+  payload: textType;
 }
 
-export type Action = setTheme | setText;
+export type Action = setTheme | addText;
 
 export const SET_THEME = 'SET_THEME';
-export const SET_TEXT = 'SET_TEXT';
+export const ADD_TEXT = 'ADD_TEXT';

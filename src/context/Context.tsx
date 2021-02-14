@@ -5,9 +5,9 @@ import * as types from './types';
 
 const initialState = {
   theme: 'dark' as types.themeType,
+  text: [],
   setTheme: () => null,
-  text: null,
-  setText: () => null,
+  addText: () => null,
 };
 
 const AppContext = createContext<types.IState>(initialState);
@@ -16,21 +16,21 @@ const Context: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const theme: string = localStorage.getItem('theme') as string;
+    const theme = localStorage.getItem('theme') as types.themeType;
 
     if (theme) setTheme(theme);
   }, []);
 
-  const setTheme = (theme: types.themeType): void => {
+  const setTheme = (theme: types.themeType) => {
     dispatch({
       type: types.SET_THEME,
       payload: theme,
     });
   };
 
-  const setText = (text: types.textType[]) => {
+  const addText = (text: types.textType) => {
     dispatch({
-      type: types.SET_TEXT,
+      type: types.ADD_TEXT,
       payload: text,
     });
   };
@@ -40,8 +40,8 @@ const Context: FC = ({ children }) => {
       value={{
         theme: state.theme,
         text: state.text,
-        setText,
         setTheme,
+        addText,
       }}>
       {children}
     </AppContext.Provider>
