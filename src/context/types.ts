@@ -3,10 +3,8 @@ export type themeTypes = 'light' | 'dark';
 export interface IState {
   theme: themeTypes;
   setTheme: (theme: themeTypes) => void;
-}
-
-interface theme {
-  type: 'THEME';
+  text: string | null;
+  setText: (text: string) => void;
 }
 
 interface setTheme {
@@ -14,7 +12,12 @@ interface setTheme {
   payload: themeTypes;
 }
 
-export type Action = theme | setTheme;
+interface setText {
+  type: 'SET_TEXT';
+  payload: string;
+}
 
-export const THEME = 'THEME';
+export type Action = setTheme | setText;
+
 export const SET_THEME = 'SET_THEME';
+export const SET_TEXT = 'SET_TEXT';
