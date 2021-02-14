@@ -8,7 +8,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
 
-import { useAppContext } from '../context/Context';
+import { useAppContext } from '../../context/Context';
 
 const useStyles = makeStyles(() => ({
   root: {

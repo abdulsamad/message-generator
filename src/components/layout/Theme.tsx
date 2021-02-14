@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
 
-import { useAppContext } from '../context/Context';
+import { useAppContext } from '../../context/Context';
 
 const Theme: FC = ({ children }) => {
   const { theme } = useAppContext();

@@ -1,15 +1,15 @@
 import { FC } from 'react';
 
-import Theme from './layout/Theme';
-import Navbar from './layout/Navbar';
-import Form from './layout/Form';
+import Theme from './components/layout/Theme';
+import Navbar from './components/layout/Navbar';
+import Form from './components/layout/Form';
 import { Context } from './context/Context';
 
 const App: FC = () => {
   return (
     <Context>
       <Theme>
-        <Navbar title="Message Generator" />
+        <Navbar title='Message Generator' />
         <Form />
       </Theme>
     </Context>
