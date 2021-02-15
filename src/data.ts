@@ -3,7 +3,7 @@ interface nameType {
   price: string;
 }
 
-/* Dummy Data: You can change this as per your convenience */
+/* Dummy Data: You can change this as per your demand */
 
 export const names: nameType[] = [
   {
