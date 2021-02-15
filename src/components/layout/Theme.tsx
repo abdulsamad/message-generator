@@ -11,6 +11,12 @@ const Theme: FC = ({ children }) => {
       createMuiTheme({
         palette: {
           type: theme,
+          primary: {
+            main: '#FFC107',
+          },
+          secondary: {
+            main: '#2196F3',
+          },
         },
       }),
     [theme],
