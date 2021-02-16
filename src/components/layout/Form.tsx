@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, FormEvent, useState } from 'react';
+import { FC, FormEventHandler, FormEvent, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -37,6 +37,7 @@ const Form: FC = () => {
   const { addText } = useAppContext();
   const [nameVal, setNameVal] = useState('');
   const [countVal, setCountVal] = useState('');
+  const nameRef = useRef<HTMLInputElement>(null);
   const classes = useStyles();
 
   const handleSubmit: FormEventHandler = (ev: FormEvent) => {
@@ -46,6 +47,7 @@ const Form: FC = () => {
 
     addText({ name: nameVal, count: countVal });
     clearFields();
+    nameRef.current?.focus();
   };
 
   const clearFields = () => {
@@ -61,7 +63,6 @@ const Form: FC = () => {
             <Grid justify='center' spacing={1} container>
               <Grid item xs={8}>
                 <Autocomplete
-                  id='name'
                   clearOnBlur={false}
                   options={names}
                   inputValue={nameVal}
@@ -72,6 +73,7 @@ const Form: FC = () => {
                   renderInput={params => (
                     <TextField
                       {...params}
+                      inputRef={nameRef}
                       label='Name'
                       variant='filled'
                       name='name'
@@ -83,7 +85,6 @@ const Form: FC = () => {
               </Grid>
               <Grid item xs={4}>
                 <Autocomplete
-                  id='count'
                   clearOnBlur={false}
                   options={count}
                   inputValue={countVal}
