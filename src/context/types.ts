@@ -10,6 +10,7 @@ export interface IState {
   text: textType[];
   setTheme: (theme: themeType) => void;
   addText: (text: textType) => void;
+  resetText: () => void;
 }
 
 interface setTheme {
@@ -22,7 +23,12 @@ interface addText {
   payload: textType;
 }
 
-export type Action = setTheme | addText;
+interface resetText {
+  type: 'RESET_TEXT';
+}
+
+export type Action = setTheme | addText | resetText;
 
 export const SET_THEME = 'SET_THEME';
 export const ADD_TEXT = 'ADD_TEXT';
+export const RESET_TEXT = 'RESET_TEXT';

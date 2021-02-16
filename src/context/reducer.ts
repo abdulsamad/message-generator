@@ -14,6 +14,12 @@ const reducer = (state: types.IState, action: types.Action) => {
         text: [...state.text, action.payload],
       };
 
+    case types.RESET_TEXT:
+      return {
+        ...state,
+        text: [],
+      };
+
     default:
       return state;
   }

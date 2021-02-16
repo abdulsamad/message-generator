@@ -8,6 +8,7 @@ const initialState = {
   text: [],
   setTheme: () => null,
   addText: () => null,
+  resetText: () => null,
 };
 
 const AppContext = createContext<types.IState>(initialState);
@@ -35,6 +36,12 @@ const Context: FC = ({ children }) => {
     });
   };
 
+  const resetText = () => {
+    dispatch({
+      type: types.RESET_TEXT,
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -42,6 +49,7 @@ const Context: FC = ({ children }) => {
         text: state.text,
         setTheme,
         addText,
+        resetText,
       }}>
       {children}
     </AppContext.Provider>
