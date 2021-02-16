@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +10,7 @@ import Fade from '@material-ui/core/Fade';
 
 import { useAppContext } from '../../context/Context';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
   },
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     flexGrow: 1,
   },
   icon: {
-    color: '#fff',
+    color: theme.palette.common.black,
   },
 }));
 
