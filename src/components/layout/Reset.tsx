@@ -1,4 +1,6 @@
 import { FC, useState, forwardRef } from 'react';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,6 +12,12 @@ import { TransitionProps } from '@material-ui/core/transitions';
 
 import { useAppContext } from '../../context/Context';
 
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    marginTop: 20,
+  },
+}));
+
 const Transition = forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
   ref: React.Ref<unknown>,
@@ -20,6 +28,7 @@ const Transition = forwardRef(function Transition(
 const Reset: FC = () => {
   const { resetText } = useAppContext();
   const [open, setOpen] = useState(false);
+  const classes = useStyles();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,9 +44,9 @@ const Reset: FC = () => {
   };
 
   return (
-    <div>
-      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
-        Reset All
+    <Container className={classes.root}>
+      <Button variant='contained' color='secondary' onClick={handleClickOpen} fullWidth>
+        Reset All Data
       </Button>
       <Dialog
         open={open}
@@ -61,7 +70,7 @@ const Reset: FC = () => {
           <Button onClick={reset}>Yes</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Container>
   );
 };
 
