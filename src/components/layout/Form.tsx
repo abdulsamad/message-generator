@@ -41,12 +41,14 @@ const Form: FC = () => {
 
   const handleSubmit: FormEventHandler = (ev: FormEvent) => {
     ev.preventDefault();
-    resetForm();
+
+    if (!nameVal || !countVal) return;
 
     addText({ name: nameVal, count: countVal });
+    clearFields();
   };
 
-  const resetForm = () => {
+  const clearFields = () => {
     setNameVal('');
     setCountVal('');
   };
@@ -73,7 +75,7 @@ const Form: FC = () => {
                       label='Name'
                       variant='filled'
                       name='name'
-                      fullWidth={true}
+                      fullWidth
                       required
                     />
                   )}
@@ -96,7 +98,7 @@ const Form: FC = () => {
                       label='Count'
                       variant='filled'
                       name='count'
-                      fullWidth={true}
+                      fullWidth
                       required
                     />
                   )}
@@ -110,8 +112,8 @@ const Form: FC = () => {
               className={classes.resetBtn}
               variant='outlined'
               color='primary'
-              onClick={resetForm}>
-              Reset
+              onClick={clearFields}>
+              Clear Fields
             </Button>
           </form>
         </CardContent>
