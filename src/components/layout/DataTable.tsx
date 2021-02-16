@@ -13,9 +13,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 const columns = [
-  { field: 'id', flex: 1 },
+  { field: 'id', flex: 2 },
   { field: 'name', flex: 6 },
-  { field: 'count', flex: 2 },
+  { field: 'count', flex: 3 },
 ] as ColDef[];
 
 interface RowItem {
