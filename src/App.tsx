@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar';
 import Form from './components/layout/Form';
 import Send from './components/layout/Send';
 import Reset from './components/layout/Reset';
+import DataTable from './components/layout/DataTable';
 
 const App: FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: FC = () => {
       <Theme>
         <Navbar title='Message Generator' />
         <Form />
+        <DataTable />
         <Send />
         <Reset />
       </Theme>
