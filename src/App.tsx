@@ -7,6 +7,7 @@ import Form from './components/layout/Form';
 import Send from './components/layout/Send';
 import Reset from './components/layout/Reset';
 import DataTable from './components/layout/DataTable';
+import Footer from './components/layout/Footer';
 
 const App: FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: FC = () => {
         <DataTable />
         <Send />
         <Reset />
+        <Footer />
       </Theme>
     </Context>
   );
