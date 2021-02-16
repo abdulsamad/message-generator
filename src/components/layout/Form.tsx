@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, FormEventHandler, FormEvent, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,9 +7,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { useForm } from 'react-hook-form';
 
-import { names, count } from '../../autocompleteData';
+import { useAppContext } from '../../context/Context';
+import { names, count } from '../../data';
 
 const useStyles = makeStyles({
   root: {
@@ -27,40 +27,46 @@ const useStyles = makeStyles({
   submitBtn: {
     marginTop: 15,
   },
-  generateBtn: {
+  resetBtn: {
+    marginTop: 15,
     marginLeft: 15,
   },
 });
 
-interface Inputs {
-  name: string;
-  count: string;
-}
-
 const Form: FC = () => {
+  const { addText } = useAppContext();
+  const [nameVal, setNameVal] = useState('');
+  const [countVal, setCountVal] = useState('');
   const classes = useStyles();
-  const { register, handleSubmit } = useForm<Inputs>();
 
-  const onSubmit = ({ name, count }: Inputs) => {
-    console.log(name, count);
+  const handleSubmit: FormEventHandler = (ev: FormEvent) => {
+    ev.preventDefault();
+    resetForm();
+
+    addText({ name: nameVal, count: countVal });
+  };
+
+  const resetForm = () => {
+    setNameVal('');
+    setCountVal('');
   };
 
   return (
     <Container className={classes.root}>
       <Card className={classes.card}>
         <CardContent>
-          <form
-            className={classes.form}
-            autoComplete='off'
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate>
+          <form className={classes.form} autoComplete='off' onSubmit={handleSubmit} noValidate>
             <Grid justify='center' spacing={1} container>
               <Grid item xs={8}>
                 <Autocomplete
                   id='name'
                   clearOnBlur={false}
                   options={names}
-                  getOptionLabel={option => option.title}
+                  inputValue={nameVal}
+                  onInputChange={(ev, newInputValue: string) => {
+                    setNameVal(newInputValue);
+                  }}
+                  getOptionLabel={option => option}
                   renderInput={params => (
                     <TextField
                       {...params}
@@ -68,7 +74,6 @@ const Form: FC = () => {
                       variant='filled'
                       name='name'
                       fullWidth={true}
-                      inputRef={register({ required: true })}
                       required
                     />
                   )}
@@ -79,6 +84,10 @@ const Form: FC = () => {
                   id='count'
                   clearOnBlur={false}
                   options={count}
+                  inputValue={countVal}
+                  onInputChange={(ev, newInputValue: string) => {
+                    setCountVal(newInputValue);
+                  }}
                   getOptionLabel={option => option}
                   renderInput={params => (
                     <TextField
@@ -88,29 +97,22 @@ const Form: FC = () => {
                       variant='filled'
                       name='count'
                       fullWidth={true}
-                      inputRef={register({ required: true })}
                       required
                     />
                   )}
                 />
               </Grid>
             </Grid>
-            <Grid spacing={2} justify='center' container>
-              <Button
-                type='submit'
-                className={classes.submitBtn}
-                variant='outlined'
-                color='primary'>
-                Add
-              </Button>
-              <Button
-                className={classes.generateBtn}
-                variant='contained'
-                color='primary'
-                onClick={() => console.log('Clicked Generate')}>
-                Generate
-              </Button>
-            </Grid>
+            <Button type='submit' className={classes.submitBtn} variant='contained' color='primary'>
+              Add
+            </Button>
+            <Button
+              className={classes.resetBtn}
+              variant='outlined'
+              color='primary'
+              onClick={resetForm}>
+              Reset
+            </Button>
           </form>
         </CardContent>
       </Card>
