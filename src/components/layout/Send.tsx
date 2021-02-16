@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import WhatsApp from '../messenger/WhatsApp';
+import Telegram from '../messenger/Telegram';
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +23,7 @@ const Send: FC = () => {
       <h3>Send via -</h3>
       <div className={classes.row}>
         <WhatsApp />
+        <Telegram />
       </div>
     </Container>
   );
