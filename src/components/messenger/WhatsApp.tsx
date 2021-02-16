@@ -29,7 +29,7 @@ const WhatsApp: FC = () => {
   const classes = useStyles();
 
   const handleClick: MouseEventHandler = () => {
-    const formattedText = text.map(({ name, count }) => `*${name}* _${count}_`).join('\n');
+    const formattedText = text.map(({ name, count }) => `*${name}* ${count}`).join('\n');
     const url = `https://wa.me?text=${encodeURIComponent(formattedText)}`;
 
     window.open(url, '_blank');
