@@ -15,7 +15,7 @@ const Theme: FC = ({ children }) => {
             main: '#FFC107',
           },
           secondary: {
-            main: '#2196F3',
+            main: '#F44336',
           },
         },
       }),
