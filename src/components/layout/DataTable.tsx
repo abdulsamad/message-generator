@@ -16,6 +16,7 @@ const columns = [
   { field: 'id', flex: 2 },
   { field: 'name', flex: 6 },
   { field: 'count', flex: 3 },
+  { field: 'delivery', flex: 3 },
 ] as ColDef[];
 
 interface RowItem {
@@ -30,7 +31,12 @@ const DataGridDemo: FC = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    const rowArr = text.map(({ name, count }, index) => ({ id: ++index, name, count }));
+    const rowArr = text.map(({ name, count, delivery }, index) => ({
+      id: ++index,
+      name,
+      count,
+      delivery,
+    }));
     setRows(rowArr);
   }, [text]);
 
