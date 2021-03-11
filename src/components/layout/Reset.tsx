@@ -22,7 +22,7 @@ const Transition = forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
   ref: React.Ref<unknown>,
 ) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const Reset: FC = () => {
@@ -45,26 +45,27 @@ const Reset: FC = () => {
 
   return (
     <Container className={classes.root}>
-      <Button variant='contained' color='secondary' onClick={handleClickOpen} fullWidth>
-        Reset All Data
+      <Button variant="contained" color="secondary" onClick={handleClickOpen} fullWidth>
+        Clear All Data
       </Button>
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-labelledby='alert-dialog-slide-title'
-        aria-describedby='alert-dialog-slide-description'>
-        <DialogTitle id='alert-dialog-slide-title'>
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">
           Are you sure you want to reset data?
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-slide-description'>
+          <DialogContentText id="alert-dialog-slide-description">
             <b>Note:</b> All your items added after the page load will get removed.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
+          <Button onClick={handleClose} color="primary">
             No
           </Button>
           <Button onClick={reset}>Yes</Button>
