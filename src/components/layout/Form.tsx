@@ -7,6 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import { useAppContext } from '../../context/Context';
 import { names, count } from '../../data';
@@ -31,12 +35,20 @@ const useStyles = makeStyles({
     marginTop: 15,
     marginLeft: 15,
   },
+  formControl: {
+    minWidth: 120,
+    marginTop: 15,
+  },
+  select: {
+    margin: '10px 0',
+  },
 });
 
 const Form: FC = () => {
   const { addText } = useAppContext();
   const [nameVal, setNameVal] = useState('');
   const [countVal, setCountVal] = useState('');
+  const [selectVal, setSelectVal] = useState('none');
   const nameRef = useRef<HTMLInputElement>(null);
   const classes = useStyles();
 
@@ -44,8 +56,9 @@ const Form: FC = () => {
     ev.preventDefault();
 
     if (!nameVal || !countVal) return;
+    const delivery = selectVal === 'none' ? undefined : selectVal;
 
-    addText({ name: nameVal, count: countVal });
+    addText({ name: nameVal, count: countVal, delivery });
     clearFields();
     nameRef.current?.focus();
   };
@@ -59,8 +72,8 @@ const Form: FC = () => {
     <Container className={classes.root}>
       <Card className={classes.card}>
         <CardContent>
-          <form className={classes.form} autoComplete='off' onSubmit={handleSubmit} noValidate>
-            <Grid justify='center' spacing={1} container>
+          <form className={classes.form} autoComplete="off" onSubmit={handleSubmit} noValidate>
+            <Grid justify="center" spacing={1} container>
               <Grid item xs={8}>
                 <Autocomplete
                   clearOnBlur={false}
@@ -74,9 +87,9 @@ const Form: FC = () => {
                     <TextField
                       {...params}
                       inputRef={nameRef}
-                      label='Name'
-                      variant='filled'
-                      name='name'
+                      label="Name"
+                      variant="filled"
+                      name="name"
                       fullWidth
                       required
                     />
@@ -95,10 +108,10 @@ const Form: FC = () => {
                   renderInput={params => (
                     <TextField
                       {...params}
-                      type='number'
-                      label='Count'
-                      variant='filled'
-                      name='count'
+                      type="number"
+                      label="Count"
+                      variant="filled"
+                      name="count"
                       fullWidth
                       required
                     />
@@ -106,16 +119,39 @@ const Form: FC = () => {
                 />
               </Grid>
             </Grid>
-            <Button type='submit' className={classes.submitBtn} variant='contained' color='primary'>
-              Add
-            </Button>
-            <Button
-              className={classes.resetBtn}
-              variant='outlined'
-              color='primary'
-              onClick={clearFields}>
-              Clear Fields
-            </Button>
+            <FormControl className={classes.formControl}>
+              <InputLabel id="delivery-label">Delivery Type</InputLabel>
+              <Select
+                labelId="delivery-label"
+                value={selectVal}
+                onChange={ev => {
+                  const value = (ev.target as HTMLSelectElement).value;
+                  setSelectVal(value);
+                }}
+              >
+                <MenuItem value="none">None</MenuItem>
+                <MenuItem value="free">Free Delivery</MenuItem>
+                <MenuItem value="express">Express Delivery</MenuItem>
+              </Select>
+            </FormControl>
+            <div>
+              <Button
+                type="submit"
+                className={classes.submitBtn}
+                variant="contained"
+                color="primary"
+              >
+                Add
+              </Button>
+              <Button
+                className={classes.resetBtn}
+                variant="outlined"
+                color="primary"
+                onClick={clearFields}
+              >
+                Clear Fields
+              </Button>
+            </div>
           </form>
         </CardContent>
       </Card>
