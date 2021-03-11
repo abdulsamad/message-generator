@@ -3,6 +3,7 @@ export type themeType = 'light' | 'dark';
 export type textType = {
   name: string;
   count: string;
+  delivery?: string;
 };
 
 export interface IState {
