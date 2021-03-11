@@ -29,7 +29,12 @@ const Telegram: FC = () => {
   const classes = useStyles();
 
   const handleClick: MouseEventHandler = () => {
-    const formattedText = text.map(({ name, count }) => `**${name}** ${count}`).join('\n');
+    const formattedText = text
+      .map(({ name, count, delivery }) => {
+        const deliveryType = delivery ? `(${delivery})` : '';
+        return `**${name}** ${count} ${deliveryType}`;
+      })
+      .join('\n');
     const url = `https://t.me/share/url?text=${encodeURIComponent(formattedText)}`;
 
     window.open(url, '_blank');
@@ -37,10 +42,11 @@ const Telegram: FC = () => {
 
   return (
     <Button
-      variant='contained'
+      variant="contained"
       className={classes.button}
       startIcon={<TelegramIcon />}
-      onClick={handleClick}>
+      onClick={handleClick}
+    >
       Telegram
     </Button>
   );

@@ -16,7 +16,12 @@ const Email: FC = () => {
   const classes = useStyles();
 
   const handleClick: MouseEventHandler = () => {
-    const body = text.map(({ name, count }) => `${name} ${count}`).join('\n');
+    const body = text
+      .map(({ name, count, delivery }) => {
+        const deliveryType = delivery ? `(${delivery})` : '';
+        return `${name} ${count} ${deliveryType}`;
+      })
+      .join('\n');
     const subject = 'Generated from Message Generator';
     const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
@@ -25,10 +30,11 @@ const Email: FC = () => {
 
   return (
     <Button
-      variant='contained'
+      variant="contained"
       className={classes.button}
       startIcon={<EmailIcon />}
-      onClick={handleClick}>
+      onClick={handleClick}
+    >
       Email
     </Button>
   );
