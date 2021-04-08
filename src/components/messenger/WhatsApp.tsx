@@ -1,25 +1,25 @@
-import { MouseEventHandler, FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import { MouseEventHandler, FC } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
-import { useAppContext } from '../../context/Context';
+import { useAppContext } from "../../context/Context";
 
 const useStyles = makeStyles({
   button: {
-    color: '#f5f5f5',
-    backgroundColor: '#25d366',
+    color: "#f5f5f5",
+    backgroundColor: "#25d366",
 
-    '&:hover': {
-      backgroundColor: '#57d685',
+    "&:hover": {
+      backgroundColor: "#57d685",
     },
 
-    '&:active': {
-      backgroundColor: '#57d685',
+    "&:active": {
+      backgroundColor: "#57d685",
     },
 
-    '&:focus': {
-      boxShadow: '0 0 0 0.2rem #57d685',
+    "&:focus": {
+      boxShadow: "0 0 0 0.2rem #57d685",
     },
   },
 });
@@ -31,13 +31,13 @@ const WhatsApp: FC = () => {
   const handleClick: MouseEventHandler = () => {
     const formattedText = text
       .map(({ name, count, delivery }) => {
-        const deliveryType = delivery ? `(${delivery})` : '';
+        const deliveryType = delivery ? `(${delivery})` : "";
         return `*${name}* ${count} ${deliveryType}`;
       })
-      .join('\n');
+      .join("\n");
     const url = `https://wa.me?text=${encodeURIComponent(formattedText)}`;
 
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (

@@ -1,4 +1,4 @@
-export type themeType = 'light' | 'dark';
+export type themeType = "light" | "dark";
 
 export type textType = {
   name: string;
@@ -15,21 +15,21 @@ export interface IState {
 }
 
 interface setTheme {
-  type: 'SET_THEME';
+  type: "SET_THEME";
   payload: themeType;
 }
 
 interface addText {
-  type: 'ADD_TEXT';
+  type: "ADD_TEXT";
   payload: textType;
 }
 
 interface resetText {
-  type: 'RESET_TEXT';
+  type: "RESET_TEXT";
 }
 
 export type Action = setTheme | addText | resetText;
 
-export const SET_THEME = 'SET_THEME';
-export const ADD_TEXT = 'ADD_TEXT';
-export const RESET_TEXT = 'RESET_TEXT';
+export const SET_THEME = "SET_THEME";
+export const ADD_TEXT = "ADD_TEXT";
+export const RESET_TEXT = "RESET_TEXT";

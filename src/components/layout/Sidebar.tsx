@@ -1,13 +1,13 @@
-import { FC, KeyboardEvent, MouseEvent, useState } from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Switch from '@material-ui/core/Switch';
+import { FC, KeyboardEvent, MouseEvent, useState } from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme: Theme) => ({
   list: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: theme.spacing(2),
   },
   fullList: {
-    width: 'auto',
+    width: "auto",
   },
 }));
 
@@ -25,10 +25,13 @@ const Sidebar: FC = () => {
   const [sidebar, setSidebar] = useState(false);
   const classes = useStyles();
 
-  const toggleDrawer = (open: boolean) => (event: KeyboardEvent | MouseEvent) => {
+  const toggleDrawer = (open: boolean) => (
+    event: KeyboardEvent | MouseEvent
+  ) => {
     if (
-      event?.type === 'keydown' &&
-      ((event as KeyboardEvent).key === 'Tab' || (event as KeyboardEvent).key === 'Shift')
+      event?.type === "keydown" &&
+      ((event as KeyboardEvent).key === "Tab" ||
+        (event as KeyboardEvent).key === "Shift")
     )
       return;
 
@@ -62,7 +65,7 @@ const Sidebar: FC = () => {
                 color="secondary"
                 name="checkedB"
                 size="small"
-                inputProps={{ 'aria-label': 'primary checkbox' }}
+                inputProps={{ "aria-label": "primary checkbox" }}
               />
             </ListItemIcon>
             <ListItemText primary="WhatsApp" />
@@ -75,7 +78,7 @@ const Sidebar: FC = () => {
                 color="secondary"
                 name="checkedB"
                 size="small"
-                inputProps={{ 'aria-label': 'primary checkbox' }}
+                inputProps={{ "aria-label": "primary checkbox" }}
               />
             </ListItemIcon>
             <ListItemText primary="Telegram" />

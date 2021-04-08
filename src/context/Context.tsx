@@ -1,10 +1,10 @@
-import { createContext, useContext, useReducer, useEffect, FC } from 'react';
+import { createContext, useContext, useReducer, useEffect, FC } from "react";
 
-import reducer from './reducer';
-import * as types from './types';
+import reducer from "./reducer";
+import * as types from "./types";
 
 const initialState = {
-  theme: 'dark' as types.themeType,
+  theme: "dark" as types.themeType,
   text: [],
   setTheme: () => null,
   addText: () => null,
@@ -17,7 +17,7 @@ const Context: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const theme = localStorage.getItem('theme') as types.themeType;
+    const theme = localStorage.getItem("theme") as types.themeType;
 
     if (theme) setTheme(theme);
   }, []);
@@ -50,7 +50,8 @@ const Context: FC = ({ children }) => {
         setTheme,
         addText,
         resetText,
-      }}>
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
@@ -60,7 +61,7 @@ const useAppContext = () => {
   const context = useContext(AppContext);
 
   if (context === undefined)
-    throw new Error('useContext must be used within a AppContext Provider.');
+    throw new Error("useContext must be used within a AppContext Provider.");
 
   return context;
 };

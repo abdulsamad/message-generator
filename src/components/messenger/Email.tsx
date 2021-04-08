@@ -1,9 +1,9 @@
-import { MouseEventHandler, FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import EmailIcon from '@material-ui/icons/Email';
+import { MouseEventHandler, FC } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import EmailIcon from "@material-ui/icons/Email";
 
-import { useAppContext } from '../../context/Context';
+import { useAppContext } from "../../context/Context";
 
 const useStyles = makeStyles({
   button: {
@@ -18,14 +18,16 @@ const Email: FC = () => {
   const handleClick: MouseEventHandler = () => {
     const body = text
       .map(({ name, count, delivery }) => {
-        const deliveryType = delivery ? `(${delivery})` : '';
+        const deliveryType = delivery ? `(${delivery})` : "";
         return `${name} ${count} ${deliveryType}`;
       })
-      .join('\n');
-    const subject = 'Generated from Message Generator';
-    const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      .join("\n");
+    const subject = "Generated from Message Generator";
+    const url = `mailto:?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
 
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (

@@ -1,22 +1,22 @@
-import { FC, useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { DataGrid, ColDef } from '@material-ui/data-grid';
+import { FC, useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { DataGrid, ColDef } from "@material-ui/data-grid";
 
-import { useAppContext } from '../../context/Context';
+import { useAppContext } from "../../context/Context";
 
 const useStyles = makeStyles(() => ({
   root: {
     height: 400,
-    margin: '15px auto',
+    margin: "15px auto",
   },
 }));
 
 const columns = [
-  { field: 'id', flex: 2 },
-  { field: 'name', flex: 6 },
-  { field: 'count', flex: 3 },
-  { field: 'delivery', flex: 3 },
+  { field: "id", flex: 2 },
+  { field: "name", flex: 6 },
+  { field: "count", flex: 3 },
+  { field: "delivery", flex: 3 },
 ] as ColDef[];
 
 interface RowItem {
@@ -42,7 +42,14 @@ const DataGridDemo: FC = () => {
 
   return (
     <Container className={classes.root}>
-      {rows !== null && <DataGrid rows={rows} columns={columns} pageSize={5} disableColumnMenu />}
+      {rows !== null && (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          disableColumnMenu
+        />
+      )}
     </Container>
   );
 };

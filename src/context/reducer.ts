@@ -1,4 +1,4 @@
-import * as types from './types';
+import * as types from "./types";
 
 const reducer = (state: types.IState, action: types.Action) => {
   switch (action.type) {

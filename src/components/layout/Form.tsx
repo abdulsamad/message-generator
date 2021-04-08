@@ -1,19 +1,19 @@
-import { FC, FormEventHandler, FormEvent, useState, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { FC, FormEventHandler, FormEvent, useState, useRef } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
-import { useAppContext } from '../../context/Context';
-import { names, count } from '../../data';
+import { useAppContext } from "../../context/Context";
+import { names, count } from "../../data";
 
 const useStyles = makeStyles({
   root: {
@@ -23,10 +23,10 @@ const useStyles = makeStyles({
     minWidth: 275,
   },
   title: {
-    fontSize: '1.5rem',
+    fontSize: "1.5rem",
   },
   form: {
-    maxWidth: '100%',
+    maxWidth: "100%",
   },
   submitBtn: {
     marginTop: 15,
@@ -40,15 +40,15 @@ const useStyles = makeStyles({
     marginTop: 15,
   },
   select: {
-    margin: '10px 0',
+    margin: "10px 0",
   },
 });
 
 const Form: FC = () => {
   const { addText } = useAppContext();
-  const [nameVal, setNameVal] = useState('');
-  const [countVal, setCountVal] = useState('');
-  const [selectVal, setSelectVal] = useState('none');
+  const [nameVal, setNameVal] = useState("");
+  const [countVal, setCountVal] = useState("");
+  const [selectVal, setSelectVal] = useState("none");
   const nameRef = useRef<HTMLInputElement>(null);
   const classes = useStyles();
 
@@ -56,7 +56,7 @@ const Form: FC = () => {
     ev.preventDefault();
 
     if (!nameVal || !countVal) return;
-    const delivery = selectVal === 'none' ? undefined : selectVal;
+    const delivery = selectVal === "none" ? undefined : selectVal;
 
     addText({ name: nameVal, count: countVal, delivery });
     clearFields();
@@ -64,15 +64,20 @@ const Form: FC = () => {
   };
 
   const clearFields = () => {
-    setNameVal('');
-    setCountVal('');
+    setNameVal("");
+    setCountVal("");
   };
 
   return (
     <Container className={classes.root}>
       <Card className={classes.card}>
         <CardContent>
-          <form className={classes.form} autoComplete="off" onSubmit={handleSubmit} noValidate>
+          <form
+            className={classes.form}
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <Grid justify="center" spacing={1} container>
               <Grid item xs={8}>
                 <Autocomplete
@@ -82,8 +87,8 @@ const Form: FC = () => {
                   onInputChange={(ev, newInputValue: string) => {
                     setNameVal(newInputValue);
                   }}
-                  getOptionLabel={option => option}
-                  renderInput={params => (
+                  getOptionLabel={(option) => option}
+                  renderInput={(params) => (
                     <TextField
                       {...params}
                       inputRef={nameRef}
@@ -104,8 +109,8 @@ const Form: FC = () => {
                   onInputChange={(ev, newInputValue: string) => {
                     setCountVal(newInputValue);
                   }}
-                  getOptionLabel={option => option}
-                  renderInput={params => (
+                  getOptionLabel={(option) => option}
+                  renderInput={(params) => (
                     <TextField
                       {...params}
                       type="number"
@@ -124,7 +129,7 @@ const Form: FC = () => {
               <Select
                 labelId="delivery-label"
                 value={selectVal}
-                onChange={ev => {
+                onChange={(ev) => {
                   const value = (ev.target as HTMLSelectElement).value;
                   setSelectVal(value);
                 }}

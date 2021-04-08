@@ -1,14 +1,14 @@
-import { FC } from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
+import { FC } from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Button from "@material-ui/core/Button";
+import Fade from "@material-ui/core/Fade";
 
-import { useAppContext } from '../../context/Context';
+import { useAppContext } from "../../context/Context";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -31,22 +31,22 @@ const Navbar: FC<Props> = ({ title }) => {
   const classes = useStyles();
 
   const toggleTheme = () => {
-    const key = 'theme';
+    const key = "theme";
 
-    if (theme === 'dark') {
-      localStorage.setItem(key, 'light');
-      setTheme('light');
+    if (theme === "dark") {
+      localStorage.setItem(key, "light");
+      setTheme("light");
     } else {
-      localStorage.setItem(key, 'dark');
-      setTheme('dark');
+      localStorage.setItem(key, "dark");
+      setTheme("dark");
     }
   };
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
-          <Typography variant='h6' className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>
           <Fade in={true}>

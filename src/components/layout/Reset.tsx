@@ -1,16 +1,16 @@
-import { FC, useState, forwardRef } from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
-import { TransitionProps } from '@material-ui/core/transitions';
+import { FC, useState, forwardRef } from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
+import { TransitionProps } from "@material-ui/core/transitions";
 
-import { useAppContext } from '../../context/Context';
+import { useAppContext } from "../../context/Context";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
-  ref: React.Ref<unknown>,
+  ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -45,7 +45,12 @@ const Reset: FC = () => {
 
   return (
     <Container className={classes.root}>
-      <Button variant="contained" color="secondary" onClick={handleClickOpen} fullWidth>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={handleClickOpen}
+        fullWidth
+      >
         Clear All Data
       </Button>
       <Dialog
@@ -61,7 +66,8 @@ const Reset: FC = () => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            <b>Note:</b> All your items added after the page load will get removed.
+            <b>Note:</b> All your items added after the page load will get
+            removed.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

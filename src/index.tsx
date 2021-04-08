@@ -1,14 +1,14 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <StrictMode>
     <App />
   </StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 serviceWorkerRegistration.register();

@@ -1,18 +1,18 @@
-import { FC } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import WhatsApp from '../messenger/WhatsApp';
-import Telegram from '../messenger/Telegram';
-import Email from '../messenger/Email';
+import { FC } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import WhatsApp from "../messenger/WhatsApp";
+import Telegram from "../messenger/Telegram";
+import Email from "../messenger/Email";
 
 const useStyles = makeStyles({
   root: {
     marginTop: 15,
   },
   row: {
-    display: 'flex',
+    display: "flex",
     gap: 15,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
 });
 
