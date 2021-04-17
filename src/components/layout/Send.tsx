@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import WhatsApp from "../messenger/WhatsApp";
 import Telegram from "../messenger/Telegram";
 import Email from "../messenger/Email";
+import SMS from "../messenger/SMS";
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +27,7 @@ const Send: FC = () => {
         <WhatsApp />
         <Telegram />
         <Email />
+        <SMS />
       </div>
     </Container>
   );
