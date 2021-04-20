@@ -4,5 +4,4 @@
 
 ![MessageGenerator light screenshot](readme/MessageGeneratorLight.png)
 
-
 ![MessageGenerator dark screenshot](readme/MessageGeneratorDark.png)
